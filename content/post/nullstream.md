@@ -47,3 +47,4 @@ not suitable for high performance code.
 
 I found this solution in a [StackOverflow
 answer](https://stackoverflow.com/a/59673391/928528).
+
