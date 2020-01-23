@@ -4,7 +4,7 @@ defaultContentLanguage: en
 title: netzhansa
 theme: cupper-hugo-theme
 googleAnalytics: UA-156831719-1
-disqusShortname: hanshuebner
+disqusShortname: netzhansa
 enableGitInfo: true
 
 permalinks:
