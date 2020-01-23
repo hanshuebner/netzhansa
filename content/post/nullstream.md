@@ -2,7 +2,6 @@
 title: "C++ debugging output"
 description: "Using a nullstream for debug output"
 date: 2020-01-23
-draft: true
 tags: ["C++", "code"]
 ---
 
