@@ -8,9 +8,9 @@ written by Hans Hübner.
 
 ![Hans' Profile Photo](/images/hans.jpg)
 
-I am a programmer and electronics tinkerer.  My hobby is also my
-profession.  In this blog, I mostly write about stuff that I do in my
-free time.
+I am a programmer and electronics tinkerer.  My hobby is also [my
+profession](cv-hans-huebner.pdf).  In this blog, I mostly write about
+stuff that I do in my free time.
 
 You can find my open source code on
 [GitHub](https://github.com/hanshuebner).  I'm also on

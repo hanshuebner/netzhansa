@@ -3,7 +3,7 @@ title: "C++ debugging output"
 description: "Using a nullstream for debug output"
 date: 2020-01-23T05:37:54+01:00
 draft: true
-tags: [C++, code]
+tags: ["C++", "code"]
 ---
 
 I like to write debugging information to an ostream instead of calling
@@ -44,3 +44,6 @@ I can then set the ostream to cerr or another stream if I want to see
 the debugging information.  A downside of the approach is that the
 debug information will be formatted even if not debugging, so it is
 not suitable for high performance code.
+
+I found this solution in a [StackOverflow
+answer](https://stackoverflow.com/a/59673391/928528).
