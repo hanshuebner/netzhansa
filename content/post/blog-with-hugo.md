@@ -1,7 +1,6 @@
 ---
 title: "New blog with hugo"
 date: 2020-01-23T16:14:46+01:00
-draft: true
 ---
 
 A dear friend told me that [HUGO](https://gohugo.io/) is how blogging
