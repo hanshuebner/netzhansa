@@ -3,8 +3,8 @@ languageCode: en-us
 defaultContentLanguage: en
 title: netzhansa
 theme: cupper-hugo-theme
-googleAnalytics: UA-123456789-1
-disqusShortname: yourdiscussshortname
+googleAnalytics: UA-156831719-1
+disqusShortname: hanshuebner
 enableGitInfo: true
 
 permalinks:
