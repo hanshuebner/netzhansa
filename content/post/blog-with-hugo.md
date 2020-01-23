@@ -1,5 +1,5 @@
 ---
-title: "New blog with hugo"
+title: "New blog with HUGO"
 date: 2020-01-23T16:14:46+01:00
 ---
 
