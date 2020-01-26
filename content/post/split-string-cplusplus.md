@@ -13,25 +13,30 @@ is a [canonical blog
 post](http://www.martinbroadhurst.com/how-to-split-a-string-in-c.html)
 describing 10 different ways how to split a string.  I like [this
 solution from
-Stackoverflow](https://stackoverflow.com/a/28142357/928528) best.
+Stackoverflow](https://stackoverflow.com/a/28142357/928528) best and
+adapted it so that I don't get empty elements in my result vector:
 
 ```c++
 #include <regex>
 
 vector<string>
-split(const string& s, string re_str = "\\s+") {
+split(const string& s) {
   vector<string> elems;
 
-  regex re(re_str);
+  regex re("\\s+");
 
   sregex_token_iterator iter(s.begin(), s.end(), re, -1);
   sregex_token_iterator end;
 
-  while (iter != end)  {
-    elems.push_back(*iter);
+  while (iter != end) {
+    if (iter->length()) {
+      elems.push_back(*iter);
+    }
     ++iter;
   }
+  cout << elems.size() << endl;
 
   return elems;
 }
 ```
+
