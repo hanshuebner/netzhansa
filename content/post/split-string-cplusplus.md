@@ -34,7 +34,6 @@ split(const string& s) {
     }
     ++iter;
   }
-  cout << elems.size() << endl;
 
   return elems;
 }
