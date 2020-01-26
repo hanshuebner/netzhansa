@@ -8,7 +8,7 @@ tags: ["C++", "code"]
 I like to write debugging information to an ostream instead of calling
 a logging function.
 
-```
+```c++
  retry:
   if (write(_fd, request.buffer(), request.length()) != request.length()) {
     if (errno == EAGAIN) {
@@ -22,7 +22,7 @@ a logging function.
 By default, I don't want to see debugging information, so I initialize
 my debugging ostream to a stream that sinks all data written to it:
 
-```
+```c++
 #pragma once
 
 #include <iostream>
