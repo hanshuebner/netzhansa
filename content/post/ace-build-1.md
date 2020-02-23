@@ -18,7 +18,7 @@ computer from parts.
 
 The [Jupiter Ace](https://en.wikipedia.org/wiki/Jupiter_Ace) was a
 home computer similar to the Sinclair ZX series, and in fact it was
-designed by the some engineers that previously worked for Sinclair
+designed by some engineers that previously worked for Sinclair
 research.  It thus does not come as a surprise that the Jupiter Ace
 was similar to the Sinclair systems in several respects: It used a
 Zilog Z80 CPU and it had a rubber keyboard not unlike the ZX Spectrum.
