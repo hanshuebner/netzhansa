@@ -1,7 +1,7 @@
 ---
 title: "PiDAB Progress Report 1"
 date: 2020-01-26T06:41:18+01:00
-tags: ["C++", "code", "Raspberry Pi", "PiDAB"]
+tags: ["c++", "code", "raspberry-pi", "pidab"]
 ---
 
 I'm working on building a DAB+ radio to replace the one that I have in

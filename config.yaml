@@ -2,7 +2,8 @@ baseURL: https://netzhansa.com
 languageCode: en-us
 defaultContentLanguage: en
 title: netzhansa
-theme: cupper-hugo-theme
+theme:
+  - cupper-hugo-theme
 googleAnalytics: UA-156831719-1
 disqusShortname: netzhansa
 enableGitInfo: true

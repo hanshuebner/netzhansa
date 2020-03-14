@@ -1,0 +1,4 @@
+{{ $name := .Get 0 }}
+{{ $original := $.Page.Resources.GetMatch $name }}
+{{ $resized := $original.Resize "200x" }}
+<img src="{{ $resized.RelPermalink }}" alt="(.Get 1)" />

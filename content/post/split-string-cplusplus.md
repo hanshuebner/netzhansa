@@ -1,7 +1,7 @@
 ---
 title: "Splitting strings by regular expression in C++"
 date: 2020-01-26T09:37:44+01:00
-tags: ["C++", "code"]
+tags: ["c++", "code"]
 ---
 
 In many cases, strings are not the right data structure, but in some

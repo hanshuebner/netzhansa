@@ -2,7 +2,7 @@
 title: "C++ debugging output"
 description: "Using a nullstream for debug output"
 date: 2020-01-23
-tags: ["C++", "code"]
+tags: ["c++", "code"]
 ---
 
 I like to write debugging information to an ostream instead of calling

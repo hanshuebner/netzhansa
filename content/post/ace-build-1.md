@@ -1,7 +1,7 @@
 ---
 title: "Building a Jupiter Ace"
 date: 2020-02-23T08:19:20+01:00
-tags: ["FORTH", "code", "Hardware"]
+tags: ["forth", "code", "hardware", "vintage-computing"]
 draft: false
 toc: false
 ---

@@ -1,0 +1,9 @@
+{{ $name := .Get 0 }}
+{{ $alt := .Get 1 }}
+{{ $width := .Get 2 }}
+{{ $height := .Get 3 }}
+{{ $original := $.Page.Resources.GetMatch $name }}
+{{ $resized := $original.Resize (printf "%sx%s" $width $height) }}
+<figure>
+  <img src="{{ $resized.RelPermalink }}" alt="(.Get 1)" />
+</figure>
