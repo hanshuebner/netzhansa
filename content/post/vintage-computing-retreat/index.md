@@ -125,7 +125,7 @@ believe that my job is done.
 # TU81
 
 The next candidate for repairs were the two Digital Equipment TU81
-PLUS drives.  One of them is connected to a PDP 11/44 running RSX-11M Plus,
+PLUS drives.  One of them is connected to a PDP-11/44 running RSX-11M Plus,
 the other to a VAX 11/750 running VMS (so I thought).
 
 {{< img "tu81plus.jpg" "DEC TU81 PLUS Tape Drive" "740" >}}
@@ -133,7 +133,7 @@ the other to a VAX 11/750 running VMS (so I thought).
 These drives are not as sophisticated as the IBM 2440 - Threading is
 manual, the overall build quality is much cheaper and they probably
 did just cost as much as a small car, not a whole house, when they
-were originally bought.  I took on the one connected to the PDP 11
+were originally bought.  I took on the one connected to the PDP-11
 first as Dave said the VAX had trouble booting.  Like the IBM 2440,
 the TU81 has internal diagnostic tests that can be run from the front
 panel, so fixing it does not require cooperation of the host that it
