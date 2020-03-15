@@ -197,12 +197,17 @@ the PDP-11 drive to working order.
 
 On to the other TU81, which sits next to the
 [VAX-11/750](https://en.wikiversity.org/wiki/DEC_VAX-11/750_(computer)):
-After cleaning the tape path and heads, I found that it was working
-perfectly and passed self tests with the new tape reliably.  I found,
-however, that the drive was not connected to the VAX, and that the VAX
-did not even have a suitable tape controller.  On to building three,
-where we found a PDP-11/84 which had the required M8739 KLESI-UA
-controller that we'd yank out.
+After cleaning the tape path and heads, the Pathfinder lead me find
+that the rotary encoder on the takeup reel to not be working.  I
+verified that the encoder did not actually generate a signal, so I
+replaced it with the part from one of the donor drive.  With that
+replacement, the drive was working perfectly and passed self tests
+with the new tape reliably.
+
+I found, however, that the drive was not connected to the VAX, and
+that the VAX did not even have a suitable tape controller.  On to
+building three, where we found a PDP-11/84 which had the required
+M8739 KLESI-UA controller that we'd yank out.
 
 Before we could even think about adding the controller into the UNIBUS
 cage, we wanted to ensure that the machine would actually run.  Dave's
