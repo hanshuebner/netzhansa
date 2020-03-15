@@ -126,7 +126,7 @@ believe that my job is done.
 
 The next candidate for repairs were the two Digital Equipment TU81
 PLUS drives.  One of them is connected to a PDP-11/44 running RSX-11M Plus,
-the other to a VAX 11/750 running VMS (so I thought).
+the other to a VAX-11/750 running VMS (so I thought).
 
 {{< img "tu81plus.jpg" "DEC TU81 PLUS Tape Drive" "740" >}}
 
@@ -231,11 +231,12 @@ maybe the L0004 UBI (Unibus Interconnect) board might be the culprit.
 We went through the stacks of boards to find another L0004 to try out
 (and at this point, I need to point out that it is quite amazing that
 Dave has a very good recollection of what to find where in his
-gigantic collection of things), and tada: Now the machine behaved
-differently depending on which of the UDA50 board sets I installed,
-allowing me to find one that actually worked and succeeded booting the
-VMS 7.2 installation that was on an RA90 drive in another corner of
-the museum, connected by a lengthy SDI serial cable.
+gigantic collection of things).  With one of the replacement boards
+installed, the machine behaved differently depending on which of the
+UDA50 board sets I installed.  This allowed me to find one that
+actually worked.  I could then boot the VMS 7.2 installation that was
+on an RA90 drive in another corner of the museum, connected by a
+lengthy SDI serial cable.
 
 With the machine known to boot, I went on to install the KLESI tape
 controller.  Naively, I rearranged the board in the Unibus cage to
@@ -245,8 +246,8 @@ several grant signals that need to be either properly controlled or
 passed on by each card installed in the bus.  Unused slots in the bus
 need to have a G7273 continuity card installed so that the bus is
 functioning properly.  Now, these continuity cards are relatively rare
-and one of the grant signals (NPG) is rarely used anyway, so it is
-common to install jumper wire on the back of the backplane to provide
+and one of the grant signals (NPG) is seldomly used anyway, so it is
+common to install a jumper wire on the back of the backplane to provide
 NPG continuity.  When a slot has this wire installed, it is sufficient
 to install a smaller, cheaper card to provide bus grant continuity,
 and by shuffling around the boards, I messed things up in that
@@ -255,18 +256,18 @@ respect.
 By looking at the backplane, I had trouble identifying which of the
 slots had the NPG continuity jumper installed:
 
-{{< img "vax11-750-backplane.jpg" "VAX 11/750 Unibus Backplane Details" "740" >}}
+{{< img "vax11-750-backplane.jpg" "VAX-11/750 Unibus Backplane Details" "740" >}}
 
 The astute reader may be able to see one blue and two red jumpers, but
 these were not the only ones.  I ended measuring the continuity of the
 two pins on each slot using a Unibus slot extender card to make sure
-that I'd exactly know which slot has the jumper and which hadn't.
+that I'd exactly know which slot had the jumper and which hadn't.
 Equipped with the results of my tests, I devised a plan how to install
 the cards and the continuity boards and finally was able to boot into
-VMS and, surprisingly, mount tapes and read them.  We did have some
-trouble writing tapes, though, and Dave found some controller related
-errors in the system error log.  At that point, I ran out of time (and
-energy) and left the rest of it for Dave to fix.
+VMS, mount tapes and read them.  We did have some trouble writing
+tapes, though, and Dave found some controller related errors in the
+system error log.  At that point, I ran out of time (and energy) and
+left the rest of it for Dave to fix.
 
 # Thanks!
 
