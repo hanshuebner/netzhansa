@@ -3,6 +3,10 @@ title: "Vintage Computing Retreat"
 date: 2020-03-14T04:50:29-04:00
 tags: ["vintage-computing"]
 ---
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>
+<style>
+  .led { font-family: 'Segment7Standard'; font-size: 90%; color: red; }
+</style>
 
 {{< img "museum-front.jpg" "Store front of the Large Scale Systems Museum" "740" >}}
 
@@ -56,13 +60,13 @@ information about the drives and how to troubleshoot them.
 Both drives had not been in working order, so I set about trying to
 find out what their problems are and whether I could fix them.  The
 upper of the two drives powered up fine, but it had trouble loading
-the tape.  It got stuck in the load process at step L20 without timing
-out or doing anything else.  Unfortunately, the service manual
-provided little help, indicating that the problem should be located in
-the upper vacuum column and one should check for clogged sensor
-nozzles.  Nothing in the manual described the failure mode of the
-drive, so after checking the vacuum columns for dirt and cleaning the
-tape path, I gave up on it.
+the tape.  It got stuck in the load process at step <b
+class="led">L20</b> without timing out or doing anything else.
+Unfortunately, the service manual provided little help, indicating
+that the problem should be located in the upper vacuum column and one
+should check for clogged sensor nozzles.  Nothing in the manual
+described the failure mode of the drive, so after checking the vacuum
+columns for dirt and cleaning the tape path, I gave up on it.
 
 The lower of the drives did not power up at first, but I found a blown
 fuse behind the drive door and replaced that.  The drive then started
@@ -81,11 +85,12 @@ the host at all.
 Interestingly, the diagnostics system has multiple "access levels" and
 in order to run some of the more low-level tests, one has to first
 enable higher access levels.  For example, in order to run test number
-50, one has to first enable access level I using one command and then
-enable access level II using another command.  I was glad that there
-was no password protection on the access levels, so having to type
-three commands was only mildly annoying.  Still.  IBM mainframes.
-Like, booting takes half an hour and constant hand holding!
+<b class="led">50</b>, one has to first enable access level I using
+one command and then enable access level II using another command.  I
+was glad that there was no password protection on the access levels,
+so having to type three commands was only mildly annoying.  Still.
+IBM mainframes.  Like, booting takes half an hour and constant hand
+holding!
 
 The 2440 drive is self-threading, so the operator only needs to place
 the reel on the file wheel, close the door and press the "Load"
@@ -142,9 +147,9 @@ inconsistent when it was run with different tapes.  This made me think
 that the tapes did not age well, maybe due to storage conditions or
 other environmental factors.  Fortunately, Dave had a small stack of
 brand new tapes from which I picked one for my further tests.  With
-that tape, I saw the same error outcome (E03) from the test which I
-had also seen with some of the used tapes, so I decided to only use
-the new tape for all further tests.
+that tape, I saw the same error outcome (<b class="led">E03</b>) from
+the test which I had also seen with some of the used tapes, so I
+decided to only use the new tape for all further tests.
 
 I used the [TU81 Pathfinder
 Manual](http://bitsavers.org/pdf/dec/magtape/tu81/EK-TUA81-SV-003_Pathf_Sep85.pdf)
@@ -183,11 +188,12 @@ low manufacturing tolerance.  Thinking about this, it makes a lot of
 sense to not require in-field alignment as that'd be hard to do in a
 reliable fashion anyway.
 
-I was out of luck, however, and could not get the E03 message produced
-by TEST 01 to go away.  With the little experience that I have with
-troubleshooting these drives, I'm going to conclude that all the heads
-have corroded enough to not work anymore, and that a new, working head
-assembly is required to restore the PDP-11 drive to working order.
+I was out of luck, however, and could not get the <b
+class="led">E03</b> message produced by test <b class="led">01</b> to go away.  With the
+little experience that I have with troubleshooting these drives, I'm
+going to conclude that all the heads have corroded enough to not work
+anymore, and that a new, working head assembly is required to restore
+the PDP-11 drive to working order.
 
 On to the other TU81, which sits next to the
 [VAX-11/750](https://en.wikiversity.org/wiki/DEC_VAX-11/750_(computer)):
