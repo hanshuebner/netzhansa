@@ -32,7 +32,7 @@ movies](https://en.wikipedia.org/wiki/Dr._Strangelove):
 
 {{< youtube "98NaJ8ss4sY?t=90" >}}
 
-So keep me busy and entertained for the week, my plan was to get some
+To keep me busy and entertained for the week, my plan was to get some
 of the many tape drives that are in the museum to actually work:
 
 {{< thumbnail "hp7978.jpg" >}}
