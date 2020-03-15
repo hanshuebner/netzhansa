@@ -234,7 +234,7 @@ Dave has a very good recollection of what to find where in his
 gigantic collection of things), and tada: Now the machine behaved
 differently depending on which of the UDA50 board sets I installed,
 allowing me to find one that actually worked and succeeded booting the
-VMS 7.2 installation that was on an RD90 drive in another corner of
+VMS 7.2 installation that was on an RA90 drive in another corner of
 the museum, connected by a lengthy SDI serial cable.
 
 With the machine known to boot, I went on to install the KLESI tape
