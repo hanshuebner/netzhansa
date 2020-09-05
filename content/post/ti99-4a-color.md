@@ -2,7 +2,7 @@
 title: "Getting Color Output out of a TI-99/4A"
 date: 2020-09-05T18:27:26+02:00
 tags: ["hardware", "vintage-computing"]
-draft: true
+draft: false
 ---
 
 ![TI-99/4A](https://upload.wikimedia.org/wikipedia/commons/1/1b/TI99-IMG_7143.jpg)
