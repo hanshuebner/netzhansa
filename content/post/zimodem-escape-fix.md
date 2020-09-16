@@ -123,10 +123,10 @@ The [ANSI X3.64 / ECMA-48
 Standard](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-48,%202nd%20Edition,%20August%201979.pdf)
 set out to unify the mess of incompatible terminal control sequences,
 and if that had been adopted widely and quickly, we'd probably no
-Escape key on any keyboard.  Many terminal vendors already had sold
-large numbers of terminals having Escape keys, however, so the
-incompatibility between Escape as a standalone key and as part of a
-control sequence was there to stay and be dealt with.
+Escape key on any keyboard.  As many terminal vendors already had sold
+large numbers of terminals having Escape keys, the incompatibility
+between Escape as a standalone key and as part of a control sequence
+was there to stay and be dealt with.
 
 In the 1980ies, properly handling Escape and function keys was not an
 all-that-easy thing to do because having to deal with real-time
