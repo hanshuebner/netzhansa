@@ -18,7 +18,7 @@ I was a BBS user for a year until I discovered the
 [UseNet](https://en.wikipedia.org/wiki/Usenet) and
 [BITNET](https://en.wikipedia.org/wiki/BITNET).  These networks
 provided BBS-like functionality, but on a global scale.  The audience
-still was somewhat small with a overall user population in the ten
+still was somewhat small with an overall user population in the ten
 thousands, but things were growing quickly and eventually, the
 Internet mostly took over all these predecessor systems.
 
