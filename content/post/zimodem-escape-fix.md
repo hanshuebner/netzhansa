@@ -1,7 +1,7 @@
 ---
 title: "Zimodem Escape Sequence Fix"
 date: 2020-09-15T08:03:38+02:00
-draft: true
+draft: false
 ---
 
 Back in the 1980ies and before the Internet existed, the popular way
@@ -113,7 +113,11 @@ the control sequence.
 
 The solution to the problem is to buffer the data received on the
 serial port for a little while to make sure that the complete control
-sequence is collected before it is sent out as one TCP packet.
+sequence is collected before it is sent out as one TCP packet.  I've
+implemented a
+[fix](https://github.com/hanshuebner/Zimodem/commit/8282794d7dc05ec9a90bde8d7728c97421ae6906),
+so if you want to follow my path, you can now use arrow keys even if
+you are connecting to far-away BBSes.
 
 # Flashbacks
 
