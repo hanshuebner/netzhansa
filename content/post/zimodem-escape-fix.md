@@ -66,13 +66,12 @@ these keys did not work as expected.  Instead of performing the
 intended function, they'd be interpreted as if I had pressed the
 Escape key followed by some other characters.
 
-To understand what's going on, it helps to know that what an ANSI
-terminal sends when the arrow or function keys are pressed.  Each of
-these keys sends a specific sequence of multiple characters, starting
-with what in ANSI parlor is called the "Control Sequence Introducer"
-(CSI): The Escape control followed by the `[` character.  For the
-arrow keys, the CSI is followed by `A`, `B`, `C` or `D` for the actual
-direction.
+To understand what's going on, it helps to know what an ANSI terminal
+sends when the arrow or function keys are pressed.  Each of these keys
+sends a specific sequence of multiple characters, starting with what
+in ANSI parlor is called the "Control Sequence Introducer" (CSI): The
+Escape control followed by the `[` character.  For the arrow keys, the
+CSI is followed by `A`, `B`, `C` or `D` for the actual direction.
 
 In many systems, the Escape key alone has some specific function, and
 it is unfortunate that Escape is also used as part of the CSI: In
