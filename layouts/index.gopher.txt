@@ -1,0 +1,13 @@
+!{{ .Title }}
+
+{{ .RawContent }}
+
+Site sections:
+{{ range .Site.Menus.main }}
+1{{ .Name }}	{{ .Identifier }}	{{ $.Site.Params.hostname }}	70
+{{ end }}
+
+Most recent articles
+{{ range first 3 .Pages.ByPublishDate.Reverse }}
+0{{ .Title }}	{{ with .OutputFormats.Get "gopher" -}}{{ .RelPermalink }}	{{ $.Site.Params.hostname }}	70 {{ end }}
+{{ end }}

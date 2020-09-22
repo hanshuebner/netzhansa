@@ -1,6 +1,7 @@
 baseURL: https://netzhansa.com
 languageCode: en-us
 defaultContentLanguage: en
+uglyURLs: true
 title: netzhansa
 theme:
   - cupper-hugo-theme
@@ -71,3 +72,32 @@ markup:
   tableOfContents:
     endLevel: 6
     startLevel: 2
+
+outputs:
+  home:
+    - HTML
+    - gopher
+  section:
+    - HTML
+    - gopher
+    - RSS
+  page:
+    - HTML
+    - gopher
+  taxonomy:
+    - HTML
+    - gopher
+    - RSS
+  taxonomyTerm:
+    - HTML
+    - gopher
+
+outputFormats:
+  gopher:
+    mediaType: text/plain
+    baseName: gophermap
+    isPlainText: true
+    protocol: 'gopher://'
+    noUgly: false
+  HTML:
+    noUgly: true

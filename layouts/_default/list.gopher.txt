@@ -1,0 +1,7 @@
+!{{ .Title }}
+
+{{ .RawContent }}
+
+{{ range .Pages.ByPublishDate.Reverse }}
+0{{ .Title }}	{{ with .OutputFormats.Get "gopher" -}}{{ .RelPermalink }}	{{ $.Site.Params.hostname}}	70 {{ end }}
+{{ end }}
