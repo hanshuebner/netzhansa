@@ -1,5 +1,5 @@
 ---
-title: "Reverse Engineering the Lantronix LAT Master Password"
+title: "Reverse Engineering the Lantronix ETS16P LAT Master Password"
 date: 2023-09-25T06:32:30+02:00
 ---
 
