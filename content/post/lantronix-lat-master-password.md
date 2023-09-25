@@ -6,7 +6,7 @@ date: 2023-09-25T06:32:30+02:00
 I'm going to take my VAX 4000/105A to an upcoming retrocomputing
 convention as part of my X.25 networking exhibit.  I would also like
 to provide a couple of serial ports for other exhibitors to connect
-their machines too, and for that, I had a Lantronix ETS16P terminal
+their machines too, and for that, I have a Lantronix ETS16P terminal
 server.  It is a relatively recent (late 1990ies) device with 16
 serial ports on RJ45 connectors and support for TCP/IP and LAT.  LAT
 is a proprietary DEC protocol for local terminal access, and it is
