@@ -20,9 +20,9 @@ year 2000, but they still provide a last firmware update on
 
 I downloaded the update file to see whether I could figure out either
 how the license code was generated so that I could generate one for
-myself, or patch the firmware to disable the license checks
-altogether.  The firmware comes in the form of a file ETSP.SYS, and
-the first thing to check is whether it is in some commonly known file
+myself, or patch the firmware to completely disable the license
+checks.  The firmware comes in the form of a file ETSP.SYS, and the
+first thing to check is whether it is in some commonly known file
 format:
 
 ```
