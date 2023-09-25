@@ -1,7 +1,6 @@
 ---
 title: "Reverse Engineering the Lantronix LAT Master Password"
 date: 2023-09-25T06:32:30+02:00
-draft: true
 ---
 
 I'm going to take my VAX 4000/105A to an upcoming retrocomputing
