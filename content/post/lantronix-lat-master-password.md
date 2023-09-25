@@ -19,7 +19,7 @@ year 2000, but they still provide a last firmware update on
 [their FTP server](ftp://ftp.lantronix.com/pub/ets16p/v3.6.4/).
 
 I downloaded the update file to see whether I could figure out either
-how the license code was generate so that I could generate one for
+how the license code was generated so that I could generate one for
 myself, or patch the firmware to disable the license checks
 altogether.  The firmware comes in the form of a file ETSP.SYS, and
 the first thing to check is whether it is in some commonly known file
