@@ -8,7 +8,7 @@ I love programming and people who know me also know that XSLT is my favorite lan
 
 Today's task was an integration task:  I needed to devise a system in which the organizer of a conference could use a desktop vector graphics application (LibreOffice Draw) to place tables, identified by a unique number, on a floor plan.  That floor plan would then be imported into a web based system in which participants could claim tables for their use.
 
-Thus, a way was needed to mark graphical elements in the floor plan as being tables and assigning them a unique number in a convenient way.  LibreOffice draw does not provide a way to assign user-defined attributes to graphical elements, but it provides a way to give them a name which would just be stored, but not displayed.  The table number would just be put into the rectangle's text content.  When exporting the floor plan to SVG, that name could be used to identity tables.
+Thus, a way was needed to mark graphical elements in the floor plan as being tables and assigning them a unique number in a convenient way.  LibreOffice draw does not provide a way to assign user-defined attributes to graphical elements, but it provides a way to give them a name which would just be stored, but not displayed.  The table number would just be put into the rectangle's text content.  When exporting the floor plan to SVG, that name could be used to identify tables.
 
 The resulting SVG element for table 124 would look something like this (attributes removed for clarity):
 
