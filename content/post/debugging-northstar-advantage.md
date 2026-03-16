@@ -4,43 +4,67 @@ date: 2026-03-16T09:17:34+01:00
 draft: false
 ---
 
-During a recent visit at the
+During a recent visit to the
 [Oldenburger Computermuseum (OCM)](https://computermuseum-oldenburg.de/), I spotted two NorthStar Advantage computers in their reserve collection.  I'd used a friend's NorthStar Advantage to lay out our school magazine using WordStar back in 1983, so I was immediately intrigued.
 
-We pulled them into the workshop and gave them a quick test.  One asked for a boot medium, while the other displayed garbage.  I offered to take them home for maintenance and repair, as I'm always happy to work on machines that I can return once I'm done.
+We pulled them into the workshop and bench-tested them.  One asked for a boot medium, while the other displayed garbage.  I offered to take them home for maintenance and repair, as I'm always happy to work on machines that I can fix and return.
 
-The NorthStar Advantage is an all-in-one system that integrates the computer, monitor, keyboard and disk drives into one unit.  It comes with a Z80 CPU at about 4 MHz, 64 kB RAM, two 5.25-inch diskette drives (or, optionally, one diskette drive and a 5 MB hard disk).  Its standout feature was a 640x240 monochrome framebuffer backed by 32 kB of dedicated display RAM - unusual for the era, which mostly relied on character-based display controllers.
+The NorthStar Advantage is an all-in-one system that integrates the computer, monitor, keyboard, and disk drives into one unit.  It came with a Z80 CPU at about 4 MHz, 64 kB RAM, two 5.25-inch floppy disk drives (or, optionally, one floppy drive and a 5 MB hard disk).  Its standout feature was a 640x240 monochrome framebuffer backed by 32 kB of dedicated display RAM - unusual for the era, which mostly relied on character-based display controllers.
 
-Despite its capabilities, the machine was not a huge success.  The base unit was expensive, and it used hard-sectored 5.25-inch diskettes instead of the common soft-sectored variety - a format that was harder to find and more expensive.
+Despite its capabilities, the machine was not a huge success.  The base unit was expensive, and it used hard-sectored 5.25-inch floppy disks instead of the common soft-sectored variety - a format that was harder to find and more expensive.
 
 # Fixing the faulty machine
 
-Back home, I started to diagnose the faulty machine:  When switched on, it displayed garbage on the screen.  Sometimes, the machine beeped and "LOAD SYSTEM" message that the ROM displays to prompt the user to insert a bootable floppy was partially visible.  Sometimes, it would just beep after a while and sometimes, it would just do nothing.
+Back home, I started to diagnose the faulty machine:  When switched on, it displayed garbage on the screen.  Sometimes, the machine beeped and the "LOAD SYSTEM" message that the ROM displays to prompt the user to insert a bootable floppy was partially visible.  Sometimes, it would just beep after a while.  Sometimes, it would do nothing.
 
-To me, this sounded as if there was a problem with one or more of the 4116 dynamic RAM chips.  The machine has 52 of these chips, and they're known to go bad over time.  Luckily, they were all socketed, so it was a matter of pulling them out and testing them with Tube Time's excellent [Pico DRAM Tester](https://github.com/schlae/pico-dram-tester).  The tester found 8 chips to be faulty, but after I replaced them with working chips, the system's behavior was still the same.
+To me, this sounded as if there was a problem with one or more of the 4116 dynamic RAM chips.  The machine has 52 of these chips, and they're known to go bad over time.  Luckily, they were all socketed, so I pulled them out and tested them with Tube Time's excellent [Pico DRAM Tester](https://github.com/schlae/pico-dram-tester).  The tester found 8 chips to be faulty, so I replaced them.  The machine did not care, though, and its behavior was still the same.
 
-## Using Claude Code as Hardware Debugging Assistant
+# Using Claude Code as Hardware Debugging Assistant
 
-I described the fault to Claude Code and also gave it access to the manual, schematics and boot ROM disassembly, planning to use it to assist me during the debugging process.  It pointed out that the boot ROM uses the display memory as stack after the machine was reset.  With this information and the observation that the garbage displayed was not always the same after I'd switch the machine on, I decided that I wanted to know whether the CPU would be able to execute code reliably when avoiding the display RAM.
+I gave Claude Code the manual, schematics, and boot ROM disassembly, installed a Z80 cross assembler, and used it both to discuss findings and generate test programs.
 
-First, I needed a way to run custom code in the machine.  For that, I used a memSIM2 EPROM emulator from [MOMIK electronics](http://www.momik.pl/) with an adapter to make it work in the 24 pin socket for the 2716 boot EPROM.  As I work on this project with Linux, I installed the [memSIM2 tool by Nils Eilers](https://github.com/nils-eilers/memSIM2) so that I could upload test programs to the emulator through USB.
+While listing possible causes for the display corruption, Claude Code mentioned that the boot ROM uses display RAM for the stack during the boot sequence.  With this information and the observation that the display corruption was not always the same after I switched the machine on, I decided to test whether the CPU could execute code reliably without touching the display RAM.
 
-For starters, I had Claude Code write me a simple test that performs the necessary machine initializations and then create a beep.  That program would not require any RAM at all and if it ran, it would tell me that the machine basically works - and it did.  Next, I had it extend the program so that it would test the display and main RAM and provide me feedback with beep signals.  This showed that the main RAM worked, but the display RAM did not.
+I needed a way to run custom code in the machine.  For that, I used a memSIM2 EPROM emulator from [MOMIK electronics](http://www.momik.pl/) with an adapter to make it work in the 24-pin socket for the 2716 boot EPROM.  As I work on this project with Linux, I installed the [memSIM2 tool by Nils Eilers](https://github.com/nils-eilers/memSIM2) so that I could upload test programs to the emulator through USB.
 
-What Claude could not really tell me is the why.  Trying to do so, it sent me down a rabbit hole of measuring ripple and noise on the power supply rails and trying to fix that, but I eventually compared the broken to the working machine to learn that the noise was normal.  While probing around, however, I noticed a thing that I observed earlier, but did not really give enough attention:  The garbage that appeared on the screen faded away over time, and within a couple minutes, the screen became completely black.  That, for sure, would be a thermal issue and confirming that just required cooling down the board with some cold spray.  With that, I could identify one SN74LS164N chip (a 6 bit register) that would would react on being cooled down with a visible response on the screen.
+First, I created a simple test that performs the necessary machine initializations and then beeps.  That program required no RAM at all.  If it ran, the machine basically worked - and it did.  Next, I extended the program so that it would test the display and main RAM and report results via beep codes.  This showed that the main RAM worked, but the display RAM did not.
 
-As the chip was not in a socket, I needed to be quite sure that the chip was somewhere in the path between the display RAM, the CPU and the video logic so that i cause the visual effect that I was seeing when failing.  Again, Claude Code was helpful, even though its understanding of schematics is somewhat llimited.  Eventually, I swapped the chip and that completely removed the failure and brought the machine to work.
+What Claude Code could not really tell me is _why_ the display RAM was failing.  It suggested measuring ripple and noise on the power supply rails, but comparing both machines showed the noise was normal.
 
-I created a couple more in-depth RAM tests and gained confidence that everything was in order from that perspective.  I found Claude Code to be quite reliably create assembler programs that would do what I needed, and it was instrumental to being able to diagnose and fix this issue.
+While probing around, however, I noticed something I'd observed earlier but hadn't given enough attention:  The garbage that appeared on the screen faded away over time, and within a couple of minutes, the screen became completely black.  That pointed to a thermal issue, and cold spray confirmed it.  With that, I could identify one SN74LS174N chip (a 6-bit D flip-flop) that would react to being cooled down with a visible response on the screen.
 
-## Why stop here?
+As the chip was not in a socket, I needed to be sure that it was somewhere in the path between the display RAM, CPU, and the video logic so that its failure could cause the visual artifacts I was seeing.  Eventually, I swapped it and that completely removed the failure and brought the machine back to life.  I created a couple more in-depth memory tests and confirmed the RAM was sound.
 
-While the machine was no longer completely broken, it still only asked for a boot floppy which I did not have.  While disk images for the system software are available on line and I could also borrow a very small number of empty diskettes from a friend, I thought it would be nice if I could run some more interesting software by using a custom boot ROM that'd accept binary code on the serial port.  Thus, I prompted Claude Code to create a boot ROM that reads [Intel HEX files](https://de.wikipedia.org/wiki/Intel_HEX) from the serial port.  That way, I could load bigger programs into the machine and not be limited to the 2 kB of the boot ROM.
+# From boot ROM to graphics demos
 
-While interactively getting the serial port communication to work with Claude Code, I also prompted it in another window to create a high performance graphics library with support for lines, circles, rectangles and sprites as well as a demo program.  To do so, it consulted a lot of web sites with Z80 coding techniques and iterated a couple of times over what it had created before it had something that I could upload using the hex file boot prom.  And again, it worked well enough to be promising for further refinement.
+I now had a working machine but no boot media.  I could borrow a small number of empty floppies from a friend, but rather than write disk images to them, I decided to keep building new software with Claude Code.
 
-Three days later, I had a sprites demo, a Pac Man game (fully playable with a reasonable player AI for demo mode), a side scrolling demo and a simple vertical shooter.  The performance of all of these programs is very reasonable given the hardware constraints, and I did not touch any of the code that Claude Code generated.
+To run larger programs, I created a custom boot ROM that reads [Intel HEX files](https://en.wikipedia.org/wiki/Intel_HEX) from the serial port.  That way, I could load programs of any size directly into the machine's memory.
 
-## Conclusion
+While interactively getting the serial port communication to work, I also prompted Claude Code in another window to create a high-performance graphics library with support for lines, circles, rectangles and sprites as well as a demo program.  It iterated on Z80-optimized drawing routines until it produced something I could upload using the hex file boot ROM - and it actually worked, quickly displaying several shapes and moving sprites across the screen.
 
-- to be written -
+Three days later, I had a sprite demo, a Pac-Man game, a side-scrolling demo and a simple vertical shooter.  Adding a demo mode to Pac-Man took many iterations until the player simulation AI was doing a passable job of chasing dots and avoiding ghosts.
+
+![Pac-Man on NorthStart](/images/northstar/pacman.jpg)
+
+When a friend visited, he pointed out that we should be able to display an image on the NorthStar's screen.  As the hex loader accepted any address, we could upload a suitably formatted image directly into the frame buffer.  So, we converted my profile image to the in-memory format of the frame buffer, turned that into a hex file, and uploaded it:
+
+![NorthStar Image Display](/images/northstar/image-upload.jpg)
+
+# Emulating mass storage
+
+Ultimately, I want to return the two machines to the museum, and it would be a shame to put them back into storage for lack of hard-sectored floppies.  Thus, I'm now working on a mass storage emulation system that can load both original floppy disk images and modern software like Pac-Man or the graphics demos.  Since Claude Code makes creating new programs fast, visitors will be able to experience both original software and new programs written specifically for the museum - after all, the NorthStar Advantage never had a chance to shine as a gaming system until now.
+
+The mass storage emulator consists of a Raspberry Pi Pico connected to the NorthStar through its parallel I/O card.  Both NorthStar machines have this extension card built in.  Separate input and output ports plus enough handshake lines make it easy to work with.
+
+![NorthStar and Raspberry Pi Pico](/images/northstar/pico-northstar.jpg)
+
+Getting the handshake signals to work correctly was difficult.  Eventually, I found that Claude Code had assumed that the strobe signal would automatically be generated when data was written.  The PIO interface requires explicit strobe control, however.  After this problem was fixed and I continued working on other parts of the system, Claude Code forgot that peculiarity and we went through the same debugging process again.
+
+I could have avoided this by adding the strobe behavior to the system prompt, but that points to a broader challenge: LLM-assisted development works best on systems that follow well-documented conventions.  Identifying where your hardware deviates from those conventions - and articulating that upfront - is its own skill.
+
+# Conclusion
+
+This was my first hardware project in which I used Claude Code extensively, and while I certainly had to work hard and provide key inputs, it helped me not only fix the machine, but also create a graphics demo, a Pac-Man clone and a vertical shooter.  The pull to keep going was hard to resist - I could almost always make progress, and it always felt easy to come up with more ideas and see them realized within minutes or hours.
+
+I'm glad that I can return these systems in working order and that they can now do things that they never could do before.
